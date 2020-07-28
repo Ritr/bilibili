@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <a href="#/">首页</a>
+        <a href="#/detail">详情</a>
+    </div>
+    <div class="router" id="index">首页</div>
+    <div class="router" id="detail">详情页面</div>
+</body>
+<script>
+    window.onhashchange = (e) => {
+        // 分析一下e
+        console.log('e:', e);
+
+        // 重要属性oldURL和newURL
+        console.log('oldURL', e.oldURL);
+        console.log('newRUL', e.newURL);
+        showRouter();
+
+    };
+    function showRouter() {
+        // 获取hash值
+        let hash = window.location.hash;
+        console.log('hash', window.location.hash);
+        let hashValue = hash.replace('#/', '');
+        // 隐藏所有router
+        $(".router").hide();
+
+        // 显示对应的router
+        let target = $("#" + hashValue);
+        if(target.length > 0){
+            $("#" + hashValue).show();
+        }else{
+            $("#index").show();
+        }
+
+        // 获取参数,需要注意参数在#之前
+        let params = new URLSearchParams(location.search);
+        console.log(params);
+
+    }
+    $(function () {
+        showRouter();
+    });
+</script>
+
+</html>
