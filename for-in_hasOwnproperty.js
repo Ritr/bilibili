@@ -20,3 +20,4 @@ console.log("name",resName);
 
 var resAge = obj1.hasOwnProperty("age");
 console.log("age",resAge);
+
