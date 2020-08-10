@@ -65,10 +65,14 @@
         }, 3000);
     }
 
-
+    var lastTime;
     function search2(e) {
-        let str = "您输入了：" + e.value + "<br />";
-        s2.innerHTML = s2.innerHTML + str;
+        var newTime = new Date();
+        if(!lastTime || newTime - lastTime > 3000){
+            let str = "您输入了：" + e.value + "<br />";
+            s2.innerHTML = s2.innerHTML + str;
+            lastTime = newTime;
+        }
     }
 
 
